@@ -1,0 +1,19 @@
+name: test
+on:
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  test:
+    name: script action test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: View context attributes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            echo WHOLE CONTEXT
+            console.log(context)
+            echo OWNER CONTEXT
+            console.log(context.payload.repository.owner)
